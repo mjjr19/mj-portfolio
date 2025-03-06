@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mubasheer Joban - Data & Product Professional</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Enhanced Home Page Styles */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #1e3a8a;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --text: #475569;
+            --text-light: #64748b;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.15);
+            --radius: 12px;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* Enhanced Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 58, 138, 0.9)), url('hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            padding-top: 100px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('overlay-pattern.png');
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-image {
+            width: 220px;
+            height: 220px;
+            margin-bottom: 2.5rem;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInDown 1.2s ease;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 3px solid transparent;
+            background: linear-gradient(135deg, var(--primary), transparent) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease;
+            background: linear-gradient(90deg, #ffffff, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1.4s ease;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            animation: fadeInUp 1.8s ease;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 8px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-outline {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Floating Elements Animation */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .float-element {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .float-1 {
+            width: 150px;
+            height: 150px;
+            top: 20%;
+            left: 10%;
+            animation-duration: 18s;
+        }
+
+        .float-2 {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 5%;
+            animation-duration: 22s;
+            animation-delay: 2s;
+        }
+
+        .float-3 {
+            width: 100px;
+            height: 100px;
+            bottom: 15%;
+            left: 15%;
+            animation-duration: 15s;
+            animation-delay: 5s;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            animation: fadeInUp 2s ease, bounce 2s infinite ease 2s;
+            z-index: 1;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            width: 26px;
+            height: 26px;
+            margin-top: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .scroll-indicator::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid rgba(255, 255, 255, 0.7);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+            transform: rotate(45deg);
+            animation: scrollDown 2s infinite;
+        }
+
+        /* Enhanced About Section */
+        .about {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0));
+            border-radius: 50%;
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-text {
+            position: relative;
+        }
+
+        .about-text::before {
+            content: '//';
+            position: absolute;
+            left: -2rem;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.5rem;
+            opacity: 0.5;
+        }
+
+        .about-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 200px);
+            gap: 1.5rem;
+            margin-top: 0;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .gallery-item:first-child {
+            grid-column: 1;
+            grid-row: 1 / span 2;
+        }
+
+        .gallery-item:nth-child(2),
+        .gallery-item:nth-child(3) {
+            grid-column: 2;
+        }
+
+        .gallery-item img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .video-wrapper {
+            margin-top: 3rem;
+            grid-column: 1 / span 2;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Enhanced Experience Section */
+        .experience {
+            background-color: var(--light);
+            position: relative;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary), rgba(37, 99, 235, 0.3));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            top: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+        }
+
+        .timeline-item:nth-child(even)::after {
+            right: auto;
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            border-left: 3px solid var(--primary);
+            background: white;
+        }
+
+        .timeline-date {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Enhanced Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            background: white;
+            transition: var(--transition);
+            border-top: 3px solid var(--primary);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* Enhanced Projects Section */
+        .projects {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .projects::before {
+            content: '';
+            position: absolute;
+            bottom: -200px;
+            left: -200px;
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0));
+            border-radius: 50%;
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            background: white;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-img {
+            height: 250px;
+        }
+
+        .project-content {
+            padding: 2.5rem;
+        }
+
+        .project-tag {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.2));
+            color: var(--primary-dark);
+            font-weight: 500;
+        }
+
+        /* Enhanced Contact Section */
+        .contact {
+            position: relative;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-item {
+            padding: 3rem 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            background: white;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            position: relative;
+        }
+
+        .contact-icon::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        /* Footer Enhancement */
+        footer {
+            background: linear-gradient(135deg, var(--secondary), var(--dark));
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-4 {
+            margin-top: 4rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            50% {
+                transform: translate(30px, 20px) rotate(5deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-5px) translateX(-50%);
+            }
+        }
+
+        @keyframes scrollDown {
+            0% {
+                transform: rotate(45deg) translate(0, 0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(45deg) translate(10px, 10px);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-gallery {
+                margin-top: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd)::after {
+                right: auto;
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(even)::after {
+                left: 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="Logomj19.jpg" alt="MJ19" height="30"> Mubasheer Joban
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about" class="active">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="fitness.html">Soccer & Fitness</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-elements">
+            <div class="float-element float-1"></div>
+            <div class="float-element float-2"></div>
+            <div class="float-element float-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-image">
+                <img src="Mubasheer Joban Headshot.jpg" alt="Mubasheer Joban">
+            </div>
+            <h1>Mubasheer Joban</h1>
+            <h2>Product Manager & Data Analytics Professional | Soccer Athlete</h2>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View My Projects</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Combining technology expertise with athletic discipline</p>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Product Manager & Data Analytics Professional</h3>
+                    <p>I'm a passionate Product Manager and Data Analytics professional with experience in developing data-driven solutions and managing successful products. Currently pursuing a Master of Science in Information Systems at the University of Washington's Foster School of Business, I combine technical expertise with leadership skills to deliver impactful results.</p>
+                    <p>In my role at Arrahman Tours, I leverage Python and SQL to drive customer growth and retention through data analytics. I'm also experienced in leading teams, as demonstrated during my time as Vice President of the Muslim Student Association at the University of Washington.</p>
+                    <p>Additionally, I run Jobunz, a pop-up vendor selling traditional Indonesian street food, where I apply business optimization techniques to maximize profitability.</p>
+                    <p>Beyond my professional career, I'm an avid soccer player and fitness enthusiast. I run the training account <a href="https://instagram.com/mj19_training.acl" target="_blank">@mj19_training.acl</a> where I share soccer training routines, fitness tips, and lifestyle content. My passion for athletics complements my analytical mindset, bringing discipline and teamwork into all areas of my life.</p>
+                    <a href="resume.html" class="btn btn-primary">View My Resume</a>
+                </div>
+
+                <div class="about-gallery">
+                    <div class="gallery-item" style="--i:1">
+                        <img src="MCToasted.jpg" alt="Mubasheer at Work">
+                    </div>
+                    <div class="gallery-item" style="--i:2">
+                        <img src="FosterGrad.jpg" alt="Mubasheer Soccer Training">
+                    </div>
+                    <div class="gallery-item" style="--i:3">
+                        <img src="Forest Photographer.jpg" alt="Mubasheer at University">
+                    </div>
+                    <div class="video-wrapper">
+                        <video controls poster="video-thumbnail.jpg">
+                            <source src="IndoRainforest.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <p class="section-subtitle">My professional journey in product management and entrepreneurship</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">April 2022 - Present</span>
+                        <h3>Product Manager and Tour Leader</h3>
+                        <h4>Arrahman Tours, Sammamish, WA</h4>
+                        <p>Leading product development for a travel company specializing in Islamic pilgrimages and historical tours. Developing an app with a team of developers and designers while utilizing data analytics to improve customer retention and growth.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2021 - Present</span>
+                        <h3>Owner</h3>
+                        <h4>Jobunz, Sammamish, WA</h4>
+                        <p>Managing a pop-up vendor selling traditional Indonesian street food. Created comprehensive business plans and optimized operations through linear programming models to maximize profits and reduce costs.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">September 2022 - June 2024</span>
+                        <h3>Vice President</h3>
+                        <h4>Muslim Student Association, Seattle, WA</h4>
+                        <p>Organized fundraising events, managed volunteer teams, and established partnerships with local organizations. Successfully raised record funds and improved volunteer retention by 50%.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2020 - Present</span>
+                        <h3>Soccer Athlete & Content Creator</h3>
+                        <h4>@mj19_training.acl, Instagram</h4>
+                        <p>Create and share soccer training content, fitness routines, and athletic lifestyle tips with a growing audience of 358+ followers, documenting my journey and helping others improve their game.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <p class="section-subtitle">Professional competencies across multiple domains</p>
+
+            <div class="skills-grid">
+                <div class="skill-category" style="--i:1">
+                    <h3>Technical Skills</h3>
+                    <ul class="skill-list">
+                        <li>Python for Data Analytics</li>
+                        <li>SQL Database Management</li>
+                        <li>Excel & Advanced Modeling</li>
+                        <li>Machine Learning Applications</li>
+                        <li>Chatbot Development</li>
+                        <li>Web Development (WordPress)</li>
+                    </ul>
+                </div>
+                <div class="skill-category" style="--i:2">
+                    <h3>Product Management</h3>
+                    <ul class="skill-list">
+                        <li>Product Requirements Documentation</li>
+                        <li>Development Team Leadership</li>
+                        <li>User Experience Design</li>
+                        <li>App Development Process</li>
+                        <li>Customer Insights Analysis</li>
+                        <li>Product Strategy</li>
+                    </ul>
+                </div>
+                <div class="skill-category" style="--i:3">
+                    <h3>Business & Leadership</h3>
+                    <ul class="skill-list">
+                        <li>Team Management</li>
+                        <li>Business Planning</li>
+                        <li>Operational Optimization</li>
+                        <li>Event Organization</li>
+                        <li>Customer Experience Management</li>
+                        <li>Partnership Development</li>
+                    </ul>
+                </div>
+                <div class="skill-category" style="--i:4">
+                    <h3>Athletic & Fitness</h3>
+                    <ul class="skill-list">
+                        <li>Soccer Training & Technique</li>
+                        <li>Fitness Program Development</li>
+                        <li>Athletic Performance Analysis</li>
+                        <li>Sports Injury Prevention</li>
+                        <li>Team Sports Leadership</li>
+                        <li>Social Media Content Creation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Recent Projects</h2>
+            <p class="section-subtitle">Exploring data analytics, product management, and application development</p>
+
+            <div class="projects-grid">
+                <div class="project-card" style="--i:1">
+                    <div class="project-img">
+                        <img src="AI pt.png" alt="AI Personal Trainer">
+                    </div>
+                    <div class="project-content">
+                        <h3>AI Personal Trainer App</h3>
+                        <p>Developed a custom GPT model in OpenAI to create an AI-powered personal training application that provides personalized workout plans and nutrition advice.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">OpenAI</span>
+                            <span class="project-tag">GPT Models</span>
+                            <span class="project-tag">App Development</span>
+                        </div>
+                        <a href="projects.html" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+                <div class="project-card" style="--i:2">
+                    <div class="project-img">
+                        <img src="kc.png" alt="Housing Price Model">
+                    </div>
+                    <div class="project-content">
+                        <h3>King County Housing Price Prediction</h3>
+                        <p>Created a predictive model using linear regression on 500,000 records of housing data to forecast prices and identify key market factors.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Linear Regression</span>
+                            <span class="project-tag">Data Analysis</span>
+                        </div>
+                        <a href="projects.html" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+                <div class="project-card" style="--i:3">
+                    <div class="project-img">
+                        <img src="Arrahman Tours Logo.bmp" alt="Arrahman Tours App">
+                    </div>
+                    <div class="project-content">
+                        <h3>Arrahman Tours Mobile App</h3>
+                        <p>Led the development of a travel app for Islamic pilgrimages, managing a team of developers and designers to create a seamless user experience.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Product Management</span>
+                            <span class="project-tag">UI/UX Design</span>
+                            <span class="project-tag">App Development</span>
+                        </div>
+                        <a href="projects.html" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="projects.html" class="btn btn-primary">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Feel free to reach out for collaboration or questions</p>
+
+            <div class="contact-info">
+                <div class="contact-item" style="--i:1">
+                    <i class="contact-icon">✉️</i>
+                    <p>Email</p>
+                    <a href="mailto:mubasheer.joban19@gmail.com">mubasheer.joban19@gmail.com</a>
+                </div>
+                <div class="contact-item" style="--i:2">
+                    <i class="contact-icon">📱</i>
+                    <p>Phone</p>
+                    <a href="tel:3605567407">360-556-7407</a>
+                </div>
+                <div class="contact-item" style="--i:3">
+                    <i class="contact-icon">🔗</i>
+                    <p>LinkedIn</p>
+                    <a href="https://www.linkedin.com/in/mubasheerjoban" target="_blank">linkedin.com/in/mubasheerjoban</a>
+                </div>
+                <div class="contact-item" style="--i:4">
+                    <i class="contact-icon">📸</i>
+                    <p>Instagram</p>
+                    <a href="https://instagram.com/mj19_training.acl" target="_blank">@mj19_training.acl</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="Logomj19.jpg" alt="MJ19 Logo">
+                </div>
+                <ul class="social-links">
+                    <li><a href="https://www.linkedin.com/in/mubasheerjoban" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://instagram.com/mj19_training.acl" target="_blank">Instagram</a></li>
+                    <li><a href="mailto:mubasheer.joban19@gmail.com">Email</a></li>
+                </ul>
+                <p>Professor Leo is the GOAT</p>
+                <p class="copyright">&copy; 2025 Mubasheer Joban. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Parallax effect for hero section
+            window.addEventListener('scroll', function() {
+                const scrollY = window.scrollY;
+                const hero = document.querySelector('.hero');
+                const translateY = scrollY * 0.5;
+
+                if (scrollY < hero.offsetHeight) {
+                    hero.style.backgroundPositionY = translateY + 'px';
+                }
+            });
+
+            // Smooth reveal of elements on scroll
+            const revealItems = document.querySelectorAll('.skill-category, .project-card, .timeline-item, .contact-item');
+
+            function revealOnScroll() {
+                const windowHeight = window.innerHeight;
+                revealItems.forEach(item => {
+                    const itemTop = item.getBoundingClientRect().top;
+                    if (itemTop < windowHeight - 100) {
+                        item.classList.add('show');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // Initial check
+
+            // Typing effect for hero subtitle
+            const heroSubtitle = document.querySelector('.hero h2');
+            const originalText = heroSubtitle.textContent;
+            heroSubtitle.textContent = '';
+
+            function typeEffect(element, text, i = 0) {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(() => typeEffect(element, text, i), 30);
+                }
+            }
+
+            // Start typing effect after hero title animation
+            setTimeout(() => {
+                typeEffect(heroSubtitle, originalText);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

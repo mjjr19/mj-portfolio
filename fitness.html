@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mubasheer Joban - Soccer & Fitness</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Fitness Page Specific Styles */
+        .hero-video {
+            height: 80vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-video video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-video::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+            z-index: -1;
+        }
+
+        .hero-video .hero-content {
+            text-align: center;
+            color: #ffffff;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-video h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-video p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .social-banner {
+            background-color: #f0f9ff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .social-banner:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-banner .banner-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            object-fit: cover;
+        }
+
+        .social-banner:hover .banner-icon {
+            transform: scale(1.05);
+        }
+
+        .fitness-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 4rem 0;
+        }
+
+        .stat-card {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #f1f5f9;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-card h3 {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            color: #64748b;
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        .youtube-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .youtube-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-description {
+            padding: 0 0.5rem;
+        }
+
+        .philosophy-container {
+            background-color: #f0f9ff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin: 4rem 0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .philosophy-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .philosophy-container::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 200px;
+            height: 200px;
+            background: rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .philosophy-container::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 200px;
+            height: 200px;
+            background: rgba(37, 99, 235, 0.05);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .philosophy-list {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+            list-style-type: none;
+        }
+
+        .philosophy-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.8rem;
+            position: relative;
+            color: #4b5563;
+        }
+
+        .philosophy-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        .connect-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .focus-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .focus-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .focus-img {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .focus-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .focus-card:hover .focus-img img {
+            transform: scale(1.05);
+        }
+
+        .focus-content {
+            padding: 1.8rem;
+        }
+
+        .focus-content h3 {
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .focus-content p {
+            color: #4b5563;
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Animation */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-video h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-video p {
+                font-size: 1.2rem;
+            }
+
+            .connect-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .connect-actions .btn {
+                width: 100%;
+                max-width: 250px;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="Logomj19.jpg" alt="MJ19" height="30"> Mubasheer Joban
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="fitness.html" class="active">Soccer & Fitness</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video Background -->
+    <section class="hero-video">
+        <video autoplay muted loop playsinline>
+            <source src="soccer-bg.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>Soccer & Fitness Training</h1>
+            <p>My journey as an athlete and fitness enthusiast</p>
+            <a href="#training" class="btn btn-primary">Explore My Training</a>
+        </div>
+    </section>
+
+    <!-- Athletic Journey Section -->
+    <section id="journey" class="about">
+        <div class="container">
+            <h2 class="section-title">My Athletic Journey</h2>
+            <p class="section-subtitle">Passion for soccer and fitness training beyond professional life</p>
+
+            <div class="about-text">
+                <p>Beyond my professional career in product management and data analytics, I am passionate about soccer and fitness. I believe that physical training not only improves athletic performance but also enhances mental discipline, focus, and leadership abilities that translate to all areas of life.</p>
+                <p>Through my training account, I share my soccer journey, battling 2 ACL Tears, workout routines, and fitness philosophy with a growing community of athletes and enthusiasts.</p>
+            </div>
+
+            <div class="social-banner">
+                <img src="Logomj19.jpg" alt="MJ19 Logo" class="banner-icon">
+                <h3 style="color: #1e3a8a; margin-bottom: 1rem; font-size: 1.6rem;">Follow My Training Journey</h3>
+                <p>Join me on Instagram at <span style="color: #1e3a8a; font-weight: 600;">@mj19_training.acl</span> for soccer training routines, fitness tips, and lifestyle content.</p>
+                <p style="margin: 1rem 0;">Current stats: 64 posts • 358 followers • 356 following</p>
+                <a href="https://instagram.com/mj19_training.acl" target="_blank" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">Follow on Instagram</a>
+            </div>
+
+            <div class="fitness-stats">
+                <div class="stat-card">
+                    <h3>5+</h3>
+                    <p>Years of Dedicated Training</p>
+                </div>
+                <div class="stat-card">
+                    <h3>3</h3>
+                    <p>Training Sessions Per Week</p>
+                </div>
+                <div class="stat-card">
+                    <h3>358</h3>
+                    <p>Instagram Followers</p>
+                </div>
+                <div class="stat-card">
+                    <h3>64</h3>
+                    <p>Training Posts Shared</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Focus Areas Section -->
+    <section id="training" class="projects" style="background-color: #f8fafc;">
+        <div class="container">
+            <h2 class="section-title">Training Focus Areas</h2>
+            <p class="section-subtitle">Developing skills across multiple aspects of athletic performance</p>
+
+            <div class="projects-grid">
+                <div class="focus-card">
+                    <div class="focus-img">
+                        <img src="Soccer Ball.jpg" alt="Soccer Skills Training">
+                    </div>
+                    <div class="focus-content">
+                        <h3>Soccer Skills Development</h3>
+                        <p>My training focuses on developing fundamental soccer skills including ball control, passing accuracy, shooting technique, and tactical awareness.</p>
+                    </div>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-img">
+                        <img src="gym.jpg" alt="Strength & Conditioning">
+                    </div>
+                    <div class="focus-content">
+                        <h3>Strength & Conditioning</h3>
+                        <p>I incorporate targeted strength training to enhance athletic performance, prevent injuries, and build functional fitness.</p>
+                    </div>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-img">
+                        <img src="Nutrition.jpg" alt="Recovery & Nutrition">
+                    </div>
+                    <div class="focus-content">
+                        <h3>Recovery & Nutrition</h3>
+                        <p>Effective recovery is as important as training itself, focusing on proper nutrition, hydration, mobility work, and adequate rest.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Videos Section -->
+    <section id="videos" class="about">
+        <div class="container">
+            <h2 class="section-title">Training Videos</h2>
+            <p class="section-subtitle">Watch my soccer drills and fitness routines</p>
+
+            <div class="fitness-videos">
+                <div class="video-item">
+                    <div class="youtube-container">
+                        <iframe 
+                            src="https://www.youtube.com/watch?v=4GiofJh9zDo" 
+                            title="Soccer Training Drill" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-description">
+                        <h3>Advanced Dribbling Drill</h3>
+                        <p>Improving ball control with cone-based dribbling exercises.</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="youtube-container">
+                        <iframe 
+                            src="https://youtu.be/4GiofJh9zDo" 
+                            title="HIIT Workout Routine" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-description">
+                        <h3>HIIT Workout Routine</h3>
+                        <p>High-intensity interval training for soccer-specific conditioning.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="https://www.youtube.com/c/YourChannelName" target="_blank" class="btn btn-primary">Visit My YouTube Channel</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Philosophy Section -->
+    <section id="philosophy" class="about">
+        <div class="container">
+            <div class="philosophy-container">
+                <h3 style="color: #1e3a8a; margin-bottom: 1.5rem; font-size: 1.5rem; position: relative; z-index: 1;">My Training Philosophy</h3>
+                <p style="position: relative; z-index: 1;">My approach to fitness and athletic development is built around several core principles:</p>
+                <ul class="philosophy-list" style="position: relative; z-index: 1;">
+                    <li><strong>Consistency over intensity:</strong> Regular, sustainable training builds better results than sporadic intense sessions.</li>
+                    <li><strong>Focus on fundamentals:</strong> Mastering basic techniques creates a solid foundation for advanced skills.</li>
+                    <li><strong>Holistic development:</strong> Training should address technical skills, physical conditioning, mental focus, and tactical understanding.</li>
+                    <li><strong>Data-driven improvement:</strong> Tracking performance metrics helps identify strengths, weaknesses, and progress over time.</li>
+                    <li><strong>Community support:</strong> Sharing knowledge and experiences with other athletes creates motivation and accelerates growth.</li>
+                </ul>
+                <p style="position: relative; z-index: 1;">Through my Instagram account <a href="https://instagram.com/mj19_training.acl" target="_blank">@mj19_training.acl</a> and this platform, I aim to inspire others to pursue their athletic goals while documenting my own journey of continuous improvement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connect Section -->
+    <section id="connect" class="contact">
+        <div class="container">
+            <h2 class="section-title">Connect With Me</h2>
+            <p class="section-subtitle">For training collaborations or soccer-related inquiries</p>
+
+            <div class="connect-actions">
+                <a href="https://instagram.com/mj19_training.acl" target="_blank" class="btn btn-primary">Follow @mj19_training.acl</a>
+                <a href="https://instagram.com/dont_fear_mubasheer" target="_blank" class="btn" style="background-color: #e0f2fe; color: #1e3a8a; border: none;">Follow @dont_fear_mubasheer</a>
+                <a href="mailto:mubasheer.joban19@gmail.com?subject=Training%20Inquiry" class="btn btn-outline">Email Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="Logomj19.jpg" alt="MJ19 Logo">
+                </div>
+                <ul class="social-links">
+                    <li><a href="https://www.linkedin.com/in/mubasheerjoban" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://instagram.com/mj19_training.acl" target="_blank">Instagram</a></li>
+                    <li><a href="mailto:mubasheer.joban19@gmail.com">Email</a></li>
+                </ul>
+                <p>Professor Leo is the GOAT</p>
+                <p class="copyright">&copy; 2025 Mubasheer Joban. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

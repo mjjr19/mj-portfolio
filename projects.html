@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mubasheer Joban - Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Projects Page Enhanced Styles */
+        :root {
+            --primary: #2563eb;
+            --primary-light: #93c5fd;
+            --primary-dark: #1d4ed8;
+            --secondary: #1e3a8a;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --text: #475569;
+            --text-light: #64748b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.15);
+            --radius: 12px;
+            --radius-lg: 16px;
+            --radius-sm: 8px;
+        }
+
+        body {
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Enhanced Header Section */
+        .page-header {
+            background: linear-gradient(135deg, var(--secondary), var(--primary-dark));
+            color: #ffffff;
+            padding: 7rem 2rem 9rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .header-shape-1 {
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            animation: float 15s infinite alternate ease-in-out;
+        }
+
+        .header-shape-2 {
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            animation: float 18s infinite alternate-reverse ease-in-out;
+        }
+
+        .header-shape-3 {
+            top: 20%;
+            left: 15%;
+            width: 100px;
+            height: 100px;
+            animation: float 12s infinite alternate ease-in-out;
+        }
+
+        .header-shape-4 {
+            bottom: 20%;
+            right: 15%;
+            width: 150px;
+            height: 150px;
+            animation: float 10s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            50% {
+                transform: translate(20px, 20px) rotate(5deg);
+            }
+            100% {
+                transform: translate(-10px, 10px) rotate(-5deg);
+            }
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeInDown 1s ease;
+            background: linear-gradient(90deg, #ffffff, var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+            animation: fadeIn 1.2s ease;
+            line-height: 1.6;
+        }
+
+        /* Project Filters Enhancements */
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            margin-top: -5rem;
+            z-index: 10;
+        }
+
+        .filter-container {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .search-box {
+            margin-bottom: 1.5rem;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            padding-left: 3rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: var(--transition);
+            color: var(--text);
+            background-color: #f8fafc;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            background-color: white;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .filter-btn {
+            background: none;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .filter-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        .filter-btn:hover::before, 
+        .filter-btn.active::before {
+            width: 100%;
+        }
+
+        .filter-btn:hover, 
+        .filter-btn.active {
+            color: #ffffff;
+            border-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+        }
+
+        /* Project List Enhancements */
+        .projects-wrapper {
+            position: relative;
+            min-height: 200px;
+        }
+
+        .loading-indicator {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .loading-indicator.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(37, 99, 235, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s infinite linear;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-list.fading {
+            opacity: 0.5;
+        }
+
+        .project {
+            background-color: #ffffff;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .project:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .project:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .project:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .project:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+
+        .project:nth-child(6) {
+            animation-delay: 1s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-category-label {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.4rem 1rem;
+            background-color: rgba(15, 23, 42, 0.8);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            z-index: 2;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-category-label.data {
+            background-color: rgba(16, 185, 129, 0.8);
+        }
+
+        .project-category-label.ai {
+            background-color: rgba(79, 70, 229, 0.8);
+        }
+
+        .project-category-label.product {
+            background-color: rgba(245, 158, 11, 0.8);
+        }
+
+        .project-category-label.business {
+            background-color: rgba(236, 72, 153, 0.8);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .project:hover .project-img img {
+            transform: scale(1.1);
+        }
+
+        .project-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.5));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project:hover .project-img::after {
+            opacity: 1;
+        }
+
+        .project-content {
+            padding: 2.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+
+        .project-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .project:hover .project-title {
+            color: var(--primary);
+        }
+
+        .project:hover .project-title::after {
+            width: 100%;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .project-description {
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .project-tag {
+            background-color: rgba(219, 234, 254, 0.5);
+            color: var(--primary-dark);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project:hover .project-tag {
+            background-color: rgba(219, 234, 254, 1);
+            transform: translateY(-2px);
+        }
+
+        .project-btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+        }
+
+        .project-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(37, 99, 235, 0.35);
+        }
+
+        /* Enhanced Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.show {
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: var(--radius-lg);
+            max-width: 900px;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            transform: translateY(30px);
+            transition: transform 0.4s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.5rem;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .close-modal:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            padding: 3rem 3rem 0;
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 2.2rem;
+            color: var(--secondary);
+            margin-bottom: 0.8rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .modal-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+
+        .modal-subtitle {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .modal-img-container {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 5s ease;
+        }
+
+        .modal-img-container:hover .modal-img {
+            transform: scale(1.1);
+        }
+
+        .modal-img-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        }
+
+        .modal-img-info {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            z-index: 2;
+            color: white;
+            max-width: 80%;
+        }
+
+        .modal-img-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-img-info p {
+            font-size: 1rem;
+            opacity: 0.9;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-body {
+            padding: 3rem;
+        }
+
+        .modal-body h3 {
+            color: var(--secondary);
+            margin: 2rem 0 1rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .modal-body h3 .section-icon {
+            margin-right: 0.8rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .modal-body p {
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .modal-body ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.2rem;
+        }
+
+        .modal-body li {
+            margin-bottom: 0.8rem;
+            color: var(--text);
+            line-height: 1.6;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .modal-body li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .modal-body .key-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background-color: #f8fafc;
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-card h4 {
+            color: var(--secondary);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .feature-card p {
+            color: var(--text);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-img {
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            height: 180px;
+        }
+
+        .gallery-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-img:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-status {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem;
+            background-color: #f8fafc;
+            border-radius: var(--radius-sm);
+            margin: 2rem 0;
+        }
+
+        .status-item {
+            text-align: center;
+        }
+
+        .status-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .status-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .project-timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 2rem 0;
+            border-left: 2px solid #e2e8f0;
+        }
+
+        .timeline-event {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .timeline-event::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--primary-light);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description {
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .related-projects {
+            margin-top: 3rem;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 2rem;
+        }
+
+        .related-projects h3 {
+            margin-top: 0;
+        }
+
+        .related-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .related-project-card {
+            background-color: #f8fafc;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .related-project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .related-project-img {
+            height: 150px;
+        }
+
+        .related-project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .related-project-content {
+            padding: 1rem;
+        }
+
+        .related-project-title {
+            font-size: 1rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .related-project-category {
+            font-size: 0.8rem;
+            color: var(--primary);
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: #f8fafc;
+            border-radius: var(--radius-sm);
+        }
+
+        .cta-section h3 {
+            margin-top: 0;
+        }
+
+        /* No Results Found */
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            display: none;
+        }
+
+        .no-results.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .no-results-icon {
+            font-size: 3rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .no-results h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .no-results p {
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .modal-content {
+                width: 90%;
+            }
+
+            .modal-img-container {
+                height: 300px;
+            }
+
+            .related-projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 5rem 1.5rem 7rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .project-list {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                margin: 10% 1rem;
+                width: auto;
+            }
+
+            .modal-header, 
+            .modal-body {
+                padding: 2rem;
+            }
+
+            .modal-img-container {
+                height: 250px;
+            }
+
+            .modal-gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .related-projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-status {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .key-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .page-header p {
+                font-size: 1.1rem;
+            }
+
+            .filter-btn {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .modal-img-container {
+                height: 200px;
+            }
+
+            .modal-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="Logomj19.jpg" alt="MJ19" height="30"> Mubasheer Joban
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="fitness.html">Soccer & Fitness</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-content">
+            <div class="header-shape header-shape-1"></div>
+            <div class="header-shape header-shape-2"></div>
+            <div class="header-shape header-shape-3"></div>
+            <div class="header-shape header-shape-4"></div>
+            <h1>My Projects Portfolio</h1>
+            <p>Explore my work in data analytics, AI development, product management, and business optimization</p>
+        </div>
+    </header>
+
+    <!-- Projects Section -->
+    <section class="projects-container">
+        <div class="filter-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="project-search" placeholder="Search projects by keyword...">
+            </div>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="data">Data Analytics</button>
+                <button class="filter-btn" data-filter="ai">AI & Machine Learning</button>
+                <button class="filter-btn" data-filter="product">Product Management</button>
+                <button class="filter-btn" data-filter="business">Business</button>
+            </div>
+        </div>
+
+        <div class="projects-wrapper">
+            <div class="loading-indicator">
+                <div class="spinner"></div>
+            </div>
+
+            <div class="project-list">
+                <!-- Project 1 -->
+                <div class="project" data-category="ai" data-keywords="openai gpt model personal trainer fitness workout">
+                    <span class="project-category-label ai">AI & ML</span>
+                    <div class="project-img">
+                        <img src="project1.jpg" alt="AI Personal Trainer">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI Personal Trainer App</h3>
+                        <div class="project-meta">
+                            <span>Master's Project</span>
+                            <span>2024</span>
+                        </div>
+                        <p class="project-description">Developed a custom GPT model in OpenAI to create a personalized AI fitness coach that provides workout plans, nutrition advice, and progress tracking.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">OpenAI</span>
+                            <span class="project-tag">GPT Models</span>
+                            <span class="project-tag">AI Development</span>
+                            <span class="project-tag">Fitness Tech</span>
+                        </div>
+                        <a href="#" class="project-btn project-detail-btn" data-project="ai-trainer">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project" data-category="data" data-keywords="python linear regression housing price prediction king county">
+                    <span class="project-category-label data">Data Analytics</span>
+                    <div class="project-img">
+                        <img src="project2.jpg" alt="Housing Price Model">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">King County Housing Price Prediction</h3>
+                        <div class="project-meta">
+                            <span>Master's Project</span>
+                            <span>2023</span>
+                        </div>
+                        <p class="project-description">Created a predictive model using linear regression on 500,000 records of housing data to forecast property prices in King County based on various features.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Linear Regression</span>
+                            <span class="project-tag">Data Analysis</span>
+                            <span class="project-tag">Real Estate</span>
+                        </div>
+                        <a href="#" class="project-btn project-detail-btn" data-project="housing">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project" data-category="product" data-keywords="mobile app development product management ui ux arrahman tours">
+                    <span class="project-category-label product">Product</span>
+                    <div class="project-img">
+                        <img src="project3.jpg" alt="Arrahman Tours App">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Arrahman Tours Mobile App</h3>
+                        <div class="project-meta">
+                            <span>Product Management</span>
+                            <span>2022-Present</span>
+                        </div>
+                        <p class="project-description">Leading the development of a comprehensive travel app for Islamic pilgrimages, managing a team of developers and designers to create a seamless user experience.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Product Management</span>
+                            <span class="project-tag">UI/UX Design</span>
+                            <span class="project-tag">Mobile Development</span>
+                            <span class="project-tag">Travel Industry</span>
+                        </div>
+                        <a href="#" class="project-btn project-detail-btn" data-project="arrahman">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project" data-category="data" data-keywords="python data analysis customer retention arrahman tours">
+                    <span class="project-category-label data">Data Analytics</span>
+                    <div class="project-img">
+                        <img src="project4.jpg" alt="Customer Retention Analysis">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Customer Retention Analysis</h3>
+                        <div class="project-meta">
+                            <span>Data Analytics</span>
+                            <span>2022-2023</span>
+                        </div>
+                        <p class="project-description">Utilized Python to develop data-driven analytics models for Arrahman Tours, providing insights into customer retention patterns and driving a 10% improvement in retention rates.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Data Analysis</span>
+                            <span class="project-tag">Customer Insights</span>
+                            <span class="project-tag">Retention Strategies</span>
+                        </div>
+                        <a href="#" class="project-btn project-detail-btn" data-project="retention">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project" data-category="business" data-keywords="excel linear programming business optimization jobunz">
+                    <span class="project-category-label business">Business</span>
+                    <div class="project-img">
+                        <img src="project5.jpg" alt="Jobunz Business Optimization">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Jobunz Business Optimization</h3>
+                        <div class="project-meta">
+                            <span>Business Analytics</span>
+                            <span>2021-Present</span>
+                        </div>
+                        <p class="project-description">Developed and implemented an optimized linear programming model in Excel to maximize revenue and reduce costs for Jobunz, a pop-up Indonesian street food vendor.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Excel</span>
+                            <span class="project-tag">Linear Programming</span>
+                            <span class="project-tag">Business Planning</span>
+                            <span class="project-tag">Cost Optimization</span>
+                        </div>
+                        <a href="#" class="project-btn project-detail-btn" data-project="jobunz">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project" data-category="business" data-keywords="fundraising campaign event management team leadership msa">
+                    <span class="project-category-label business">Business</span>
+                    <div class="project-img">
+                        <img src="project6.jpg" alt="MSA Fundraising Campaign">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">MSA Fundraising Campaign</h3>
+                        <div class="project-meta">
+                            <span>Event & Team Management</span>
+                            <span>2022-2024</span>
+                        </div>
+                        <p class="project-description">Organized and managed annual fundraising banquet raising $60,000 for the Muslim Student Association, a record for the organization that supported various programs and initiatives.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Event Management</span>
+                            <span class="project-tag">Team Leadership</span>
+                            <span class="project-tag">Volunteer Coordination</span>
+                            <span class="project-tag">Partnership Development</span>
+                        </div>
+                        <a href="#" class="project-btn project-detail-btn" data-project="msa">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No Results Found -->
+            <div class="no-results">
+                <div class="no-results-icon">🔍</div>
+                <h3>No Projects Found</h3>
+                <p>Sorry, no projects match your search criteria.</p>
+                <button class="filter-btn reset-search">View All Projects</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Detail Modals -->
+    <div id="ai-trainer-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-img-container">
+                <img src="project1.jpg" alt="AI Personal Trainer App" class="modal-img">
+                <div class="modal-img-info">
+                    <h3>AI Personal Trainer App</h3>
+                    <p>Master's Project • 2024</p>
+                </div>
+            </div>
+            <div class="modal-header">
+                <h2 class="modal-title">AI Personal Trainer App</h2>
+                <p class="modal-subtitle">A custom GPT model for personalized fitness coaching</p>
+            </div>
+            <div class="modal-body">
+                <h3><span class="section-icon">📋</span> Project Overview</h3>
+                <p>For my Master's project at the University of Washington Foster School of Business, I developed an AI-powered personal trainer application that leverages a custom-trained GPT model from OpenAI. The application provides users with personalized workout plans, nutrition advice, and progress tracking.</p>
+
+                <div class="project-status">
+                    <div class="status-item">
+                        <div class="status-value">2</div>
+                        <div class="status-label">Weeks Development Time</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-value">93%</div>
+                        <div class="status-label">User Satisfaction</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-value">3</div>
+                        <div class="status-label">Main Features</div>
+                    </div>
+                </div>
+
+                <h3><span class="section-icon">⚙️</span> Technical Details</h3>
+                <p>The project involved training a specialized GPT model using OpenAI's API to understand fitness-related queries and provide personalized responses.</p>
+
+                <div class="key-features">
+                    <div class="feature-card">
+                        <h4>Personalized Workouts</h4>
+                        <p>Custom algorithms create tailored workout plans based on user goals, fitness level, and available equipment.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Nutrition Guidance</h4>
+                        <p>AI-powered nutrition recommendations aligned with workout goals and dietary preferences.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Progress Tracking</h4>
+                        <p>Advanced analytics to monitor user progress and dynamically adjust recommendations.</p>
+                    </div>
+                </div>
+
+                <h3><span class="section-icon">🔧</span> Implementation Process</h3>
+
+                <div class="project-timeline">
+                    <div class="timeline-event">
+                        <div class="timeline-date">Week 1</div>
+                        <div class="timeline-title">Model Training & Development</div>
+                        <div class="timeline-description">Fine-tuned GPT model on fitness dataset and developed initial API integration.</div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-date">Week 2</div>
+                        <div class="timeline-title">User Interface & Testing</div>
+                        <div class="timeline-description">Created user interface and conducted comprehensive testing with fitness enthusiasts.</div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-date">Current</div>
+                        <div class="timeline-title">Refinement & Expansion</div>
+                        <div class="timeline-description">Ongoing refinement of recommendation algorithms and adding new features.</div>
+                    </div>
+                </div>
+
+                <h3><span class="section-icon">✅</span> Key Components</h3>
+                <ul>
+                    <li>Custom GPT model fine-tuned on fitness and nutrition datasets</li>
+                    <li>User profile creation and storage for personalized recommendations</li>
+                    <li>Workout plan generation based on user goals and constraints</li>
+                    <li>Nutrition advice tailored to individual needs</li>
+                    <li>Progress tracking and adaptive recommendations</li>
+                </ul>
+
+                <div class="modal-gallery">
+                    <div class="gallery-img">
+                        <img src="project1-detail1.jpg" alt="AI Trainer App Interface">
+                    </div>
+                    <div class="gallery-img">
+                        <img src="project1-detail2.jpg" alt="Workout Recommendation">
+                    </div>
+                    <div class="gallery-img">
+                        <img src="project1-detail3.jpg" alt="Progress Tracking">
+                    </div>
+                </div>
+
+                <h3><span class="section-icon">🏆</span> Outcomes & Impact</h3>
+                <p>The application demonstrated high accuracy in generating personalized fitness plans and received positive feedback from test users. The project was completed within a two-week timeframe and showcased the practical applications of AI in the fitness industry.</p>
+
+                <div class="related-projects">
+                    <h3><span class="section-icon">🔗</span> Related Projects</h3>
+                    <div class="related-projects-grid">
+                        <div class="related-project-card">
+                            <div class="related-project-img">
+                                <img src="project2.jpg" alt="King County Housing Price Prediction">
+                            </div>
+                            <div class="related-project-content">
+                                <h4 class="related-project-title">Housing Price Prediction</h4>
+                                <div class="related-project-category">Data Analytics</div>
+                            </div>
+                        </div>
+                        <div class="related-project-card">
+                            <div class="related-project-img">
+                                <img src="project4.jpg" alt="Customer Retention Analysis">
+                            </div>
+                            <div class="related-project-content">
+                                <h4 class="related-project-title">Customer Retention Analysis</h4>
+                                <div class="related-project-category">Data Analytics</div>
+                            </div>
+                        </div>
+                        <div class="related-project-card">
+                            <div class="related-project-img">
+                                <img src="project3.jpg" alt="Arrahman Tours Mobile App">
+                            </div>
+                            <div class="related-project-content">
+                                <h4 class="related-project-title">Arrahman Tours App</h4>
+                                <div class="related-project-category">Product Management</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-section">
+                    <h3>Interested in similar projects?</h3>
+                    <p>Contact me to discuss how AI and machine learning solutions can benefit your business.</p>
+                    <a href="index.html#contact" class="project-btn">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Similar detailed modals for other projects would follow here -->
+    <div id="housing-modal" class="modal">
+        <!-- Similar detailed structure as above -->
+    </div>
+
+    <div id="arrahman-modal" class="modal">
+        <!-- Similar detailed structure as above -->
+    </div>
+
+    <div id="retention-modal" class="modal">
+        <!-- Similar detailed structure as above -->
+    </div>
+
+    <div id="jobunz-modal" class="modal">
+        <!-- Similar detailed structure as above -->
+    </div>
+
+    <div id="msa-modal" class="modal">
+        <!-- Similar detailed structure as above -->
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">↑</div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Mubasheer Joban. All rights reserved.</p>
+            <ul class="social-links">
+                <li><a href="https://www.linkedin.com/in/mubasheerjoban" target="_blank">LinkedIn</a></li>
+                <li><a href="https://instagram.com/mj19_training.acl" target="_blank">Instagram</a></li>
+                <li><a href="mailto:mubasheer.joban19@gmail.com">Email</a></li>
+            </ul>
+            <p>Made with ❤️ in Sammamish, Washington</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Project filtering
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projects = document.querySelectorAll('.project');
+            const projectList = document.querySelector('.project-list');
+            const noResults = document.querySelector('.no-results');
+            const loadingIndicator = document.querySelector('.loading-indicator');
+            const searchInput = document.getElementById('project-search');
+            const resetSearchBtn = document.querySelector('.reset-search');
+
+            // Filter projects by category
+            function filterProjects(category) {
+                // Show loading indicator
+                loadingIndicator.classList.add('show');
+
+                // Add fading effect
+                projectList.classList.add('fading');
+
+                setTimeout(() => {
+                    let visibleCount = 0;
+
+                    projects.forEach(project => {
+                        const projectCategory = project.getAttribute('data-category');
+                        const searchTerm = searchInput.value.toLowerCase();
+                        const projectKeywords = project.getAttribute('data-keywords').toLowerCase();
+
+                        let shouldShow = (category === 'all' || projectCategory === category);
+
+                        // Apply search filter if search term exists
+                        if (searchTerm && shouldShow) {
+                            shouldShow = projectKeywords.includes(searchTerm);
+                        }
+
+                        if (shouldShow) {
+                            project.style.display = 'block';
+                            visibleCount++;
+
+                            // Reset and stagger animations
+                            project.style.animation = 'none';
+                            project.offsetHeight; // Trigger reflow
+                            project.style.animation = `fadeInUp 0.6s ease forwards ${visibleCount * 0.1}s`;
+                        } else {
+                            project.style.display = 'none';
+                        }
+                    });
+
+                    // Show/hide no results message
+                    if (visibleCount === 0) {
+                        noResults.classList.add('show');
+                        projectList.style.display = 'none';
+                    } else {
+                        noResults.classList.remove('show');
+                        projectList.style.display = 'grid';
+                    }
+
+                    // Hide loading indicator and remove fading effect
+                    loadingIndicator.classList.remove('show');
+                    projectList.classList.remove('fading');
+                }, 400);
+            }
+
+            // Filter button click handler
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    // Reset search input if clicking category filter
+                    if (!this.classList.contains('reset-search')) {
+                        searchInput.value = '';
+                    }
+
+                    // Filter projects
+                    const filter = this.getAttribute('data-filter');
+                    filterProjects(filter);
+                });
+            });
+
+            // Search input handler
+            searchInput.addEventListener('input', function() {
+                // Get active filter
+                const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+
+                // Filter projects with search term and active category
+                filterProjects(activeFilter);
+            });
+
+            // Reset search button handler
+            resetSearchBtn.addEventListener('click', function() {
+                searchInput.value = '';
+                const allButton = document.querySelector('.filter-btn[data-filter="all"]');
+                allButton.click();
+            });
+
+            // Project modals
+            const detailButtons = document.querySelectorAll('.project-detail-btn');
+            const modals = document.querySelectorAll('.modal');
+            const closeButtons = document.querySelectorAll('.close-modal');
+            const body = document.body;
+
+            detailButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const projectId = this.getAttribute('data-project');
+                    const modal = document.getElementById(`${projectId}-modal`);
+
+                    if (modal) {
+                        modal.style.display = 'block';
+                        setTimeout(() => {
+                            modal.classList.add('show');
+                        }, 10);
+                        body.style.overflow = 'hidden'; // Prevent scrolling
+                    }
+                });
+            });
+
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    modal.classList.remove('show');
+
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                        body.style.overflow = ''; // Restore scrolling
+                    }, 400);
+                });
+            });
+
+            // Close modal when clicking outside the modal content
+            window.addEventListener('click', function(e) {
+                modals.forEach(modal => {
+                    if (e.target === modal) {
+                        modal.classList.remove('show');
+
+                        setTimeout(() => {
+                            modal.style.display = 'none';
+                            body.style.overflow = ''; // Restore scrolling
+                        }, 400);
+                    }
+                });
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    modals.forEach(modal => {
+                        if (modal.classList.contains('show')) {
+                            modal.classList.remove('show');
+
+                            setTimeout(() => {
+                                modal.style.display = 'none';
+                                body.style.overflow = ''; // Restore scrolling
+                            }, 400);
+                        }
+                    });
+                }
+            });
+
+            // Back to Top Button
+            const backToTopBtn = document.querySelector('.back-to-top');
+
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Related project cards click handler
+            const relatedProjectCards = document.querySelectorAll('.related-project-card');
+
+            relatedProjectCards.forEach((card, index) => {
+                card.addEventListener('click', function() {
+                    // Close current modal
+                    const currentModal = this.closest('.modal');
+                    currentModal.classList.remove('show');
+
+                    setTimeout(() => {
+                        currentModal.style.display = 'none';
+
+                        // Open related project modal
+                        // Note: In a real implementation, you would get the actual project ID
+                        const relatedProjectIds = ['housing', 'retention', 'arrahman'];
+                        const relatedModal = document.getElementById(`${relatedProjectIds[index]}-modal`);
+
+                        if (relatedModal) {
+                            relatedModal.style.display = 'block';
+                            setTimeout(() => {
+                                relatedModal.classList.add('show');
+                            }, 10);
+                        }
+                    }, 400);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

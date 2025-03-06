@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mubasheer Joban - Resume</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Resume Page Enhanced Styles */
+        :root {
+            --primary: #2563eb;
+            --primary-light: #93c5fd;
+            --primary-dark: #1d4ed8;
+            --secondary: #1e3a8a;
+            --secondary-light: #3b82f6;
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --text-medium: #475569;
+            --text-light: #64748b;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --border-light: #e2e8f0;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-light);
+        }
+
+        /* Enhanced Header Section */
+        .page-header {
+            background: linear-gradient(135deg, var(--secondary), var(--primary-dark));
+            color: #ffffff;
+            padding: 7rem 2rem 9rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .header-shape-1 {
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            animation: float 15s infinite alternate ease-in-out;
+        }
+
+        .header-shape-2 {
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            animation: float 18s infinite alternate-reverse ease-in-out;
+        }
+
+        .header-shape-3 {
+            top: 20%;
+            left: 15%;
+            width: 100px;
+            height: 100px;
+            animation: float 12s infinite alternate ease-in-out;
+        }
+
+        .header-shape-4 {
+            bottom: 20%;
+            right: 15%;
+            width: 150px;
+            height: 150px;
+            animation: float 10s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            50% {
+                transform: translate(20px, 20px) rotate(5deg);
+            }
+            100% {
+                transform: translate(-10px, 10px) rotate(-5deg);
+            }
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeInDown 1s ease;
+            background: linear-gradient(90deg, #ffffff, var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+            animation: fadeIn 1.2s ease;
+            line-height: 1.6;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #ffffff;
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            margin-top: 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            animation: fadeInUp 1.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .download-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(147, 197, 253, 0.1), rgba(37, 99, 235, 0.2));
+            transition: width 0.5s ease;
+            z-index: -1;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            color: var(--primary-dark);
+        }
+
+        .download-btn:hover::before {
+            width: 100%;
+        }
+
+        .btn-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .download-btn:hover .btn-icon {
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced Resume Container */
+        .resume {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3.5rem 2.5rem;
+            background-color: #ffffff;
+            box-shadow: var(--shadow-lg);
+            border-radius: var(--radius-lg);
+            margin-top: -5rem;
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        /* Enhanced Resume Header */
+        .resume-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            padding-bottom: 2rem;
+            border-bottom: none;
+            position: relative;
+        }
+
+        .resume-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .resume-header h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .resume-header .title-accent {
+            position: relative;
+            display: inline-block;
+        }
+
+        .resume-header .title-accent::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 8px;
+            bottom: 5px;
+            left: 0;
+            background-color: rgba(147, 197, 253, 0.3);
+            z-index: -1;
+        }
+
+        .resume-header p {
+            color: var(--text-medium);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .resume-contact {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .resume-contact-item {
+            display: flex;
+            align-items: center;
+            color: var(--text-medium);
+            transition: color 0.3s ease;
+        }
+
+        .resume-contact-item:hover {
+            color: var(--primary);
+        }
+
+        .contact-icon {
+            margin-right: 8px;
+            color: var(--primary);
+        }
+
+        /* Enhanced Resume Sections */
+        .resume-section {
+            margin-bottom: 3.5rem;
+            position: relative;
+            padding: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: var(--radius-md);
+        }
+
+        .resume-section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            background-color: rgba(248, 250, 252, 0.5);
+        }
+
+        .resume-section-title {
+            color: var(--secondary);
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--border-light);
+            display: flex;
+            align-items: center;
+        }
+
+        .section-icon {
+            margin-right: 1rem;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        /* Enhanced Resume Items */
+        .resume-item {
+            margin-bottom: 2.5rem;
+            padding-left: 2rem;
+            border-left: 3px solid var(--primary-light);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .resume-item::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            left: -9px;
+            top: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .resume-item:hover {
+            border-left-color: var(--primary);
+        }
+
+        .resume-item:hover::before {
+            background-color: var(--primary);
+            box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.2);
+            transform: scale(1.2);
+        }
+
+        .resume-item-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            align-items: center;
+        }
+
+        .resume-item-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .resume-item:hover .resume-item-title {
+            color: var(--primary-dark);
+            transform: translateX(5px);
+        }
+
+        .resume-item-date {
+            color: var(--text-light);
+            background-color: rgba(147, 197, 253, 0.15);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .resume-item:hover .resume-item-date {
+            background-color: rgba(37, 99, 235, 0.15);
+        }
+
+        .resume-item-subtitle {
+            color: var(--text-medium);
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .resume-item-subtitle .location-icon {
+            margin-right: 8px;
+            color: var(--primary-light);
+        }
+
+        .resume-item-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .resume-item ul {
+            margin-top: 1rem;
+            padding-left: 1.2rem;
+        }
+
+        .resume-item li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        .resume-item li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .resume-item li:hover::before {
+            color: var(--primary-dark);
+            transform: translateX(3px);
+            transition: transform 0.3s ease;
+        }
+
+        /* Enhanced Skills Section */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background-color: #dbeafe;
+            color: var(--secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(147, 197, 253, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+            background-color: rgba(59, 130, 246, 0.15);
+        }
+
+        .skill-tag span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .skill-category {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            background-color: white;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .skill-category-title {
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .skill-category-title span {
+            color: var(--primary);
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            .nav-container, .page-header, footer {
+                display: none;
+            }
+
+            .resume {
+                margin-top: 0;
+                box-shadow: none;
+                max-width: 100%;
+            }
+
+            .resume-section {
+                break-inside: avoid;
+            }
+
+            .resume-item {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            body {
+                background-color: white;
+                color: black;
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 5rem 1.5rem 7rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .resume {
+                padding: 2rem 1.5rem;
+                margin-top: -4rem;
+            }
+
+            .resume-item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .resume-item-date {
+                margin-top: 0.5rem;
+                align-self: flex-start;
+            }
+
+            .resume-contact {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="Logomj19.jpg" alt="MJ19" height="30"> Mubasheer Joban
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="fitness.html">Soccer & Fitness</a></li>
+                <li><a href="resume.html" class="active">Resume</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-content">
+            <div class="header-shape header-shape-1"></div>
+            <div class="header-shape header-shape-2"></div>
+            <div class="header-shape header-shape-3"></div>
+            <div class="header-shape header-shape-4"></div>
+            <h1><span class="title-accent">My Resume</span></h1>
+            <p>A detailed overview of my professional journey, skills, and accomplishments in product management, data analytics, and athletics</p>
+            <a href="#" class="download-btn" onclick="window.print()"><span class="btn-icon">📄</span> Download PDF</a>
+        </div>
+    </header>
+
+    <!-- Resume Section -->
+    <section class="resume">
+        <div class="resume-header">
+            <h2>Mubasheer Joban</h2>
+            <p>Product Manager & Data Analytics Professional | Soccer Athlete</p>
+            <div class="resume-contact">
+                <div class="resume-contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span>Sammamish, Washington</span>
+                </div>
+                <a href="mailto:mubasheer.joban19@gmail.com" class="resume-contact-item">
+                    <span class="contact-icon">✉️</span>
+                    mubasheer.joban19@gmail.com
+                </a>
+                <a href="tel:3605567407" class="resume-contact-item">
+                    <span class="contact-icon">📱</span>
+                    360-556-7407
+                </a>
+                <a href="https://www.linkedin.com/in/mubasheerjoban" target="_blank" class="resume-contact-item">
+                    <span class="contact-icon">🔗</span>
+                    LinkedIn
+                </a>
+                <a href="https://instagram.com/mj19_training.acl" target="_blank" class="resume-contact-item">
+                    <span class="contact-icon">📸</span>
+                    Instagram
+                </a>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h3 class="resume-section-title">
+                <span class="section-icon">💼</span>
+                Work Experience
+            </h3>
+
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <h4 class="resume-item-title">Product Manager and Tour Leader</h4>
+                    <span class="resume-item-date">April 2022 - Present</span>
+                </div>
+                <p class="resume-item-subtitle">
+                    <span class="location-icon">🏢</span>
+                    Arrahman Tours, Sammamish, WA
+                </p>
+                <p class="resume-item-description">Travel company specializing in Islamic pilgrimages and historical tours</p>
+                <ul>
+                    <li>Developing an app to launch within twelve weeks by overseeing 4 developers and 2 UI/UX designers and by providing product requirements documents</li>
+                    <li>Utilized Python to develop data-driven analytics models, providing insights into customer retention patterns and driving a 10% improvement in retention rates</li>
+                    <li>Boosted customer growth for Arrahman Tours by 20% through the use of SQL to uncover key customer insights and the implementation of targeted strategies to address their needs</li>
+                    <li>Designed and managed the company's WordPress website, resulting in a 10% increase in customer growth and enhanced online presence</li>
+                    <li>Successfully led 4 groups of up to 120 customers during the Islamic Holy Pilgrimage in Saudi Arabia, ensuring their safety, comfort, and a spiritually fulfilling experience</li>
+                </ul>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <h4 class="resume-item-title">Owner</h4>
+                    <span class="resume-item-date">2021 - Present</span>
+                </div>
+                <p class="resume-item-subtitle">
+                    <span class="location-icon">🏢</span>
+                    Jobunz, Sammamish, WA
+                </p>
+                <p class="resume-item-description">Pop-up vendor selling traditional Indonesian street food</p>
+                <ul>
+                    <li>Gained $1,200 profit at a local night market by creating a comprehensive business plan encompassing operational efficiency, targeted marketing, and strategic pricing</li>
+                    <li>Maximized revenue by achieving a $200 cost reduction from original model by developing and implementing an optimized linear programming model in Excel</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h3 class="resume-section-title">
+                <span class="section-icon">👥</span>
+                Leadership
+            </h3>
+
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <h4 class="resume-item-title">Vice President</h4>
+                    <span class="resume-item-date">September 2022 - June 2024</span>
+                </div>
+                <p class="resume-item-subtitle">
+                    <span class="location-icon">🏢</span>
+                    Muslim Student Association, Seattle, WA
+                </p>
+                <ul>
+                    <li>Organized and managed annual fundraising banquet raising $60,000, a record for the organization that supported the organization's program and initiatives</li>
+                    <li>Recruited, trained, and supervised a team of 80 volunteers, improving volunteer retention by 50%</li>
+                    <li>Established and maintained partnerships with local businesses, religious institutions, and other non-profit organizations, securing sponsorships of $5000</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h3 class="resume-section-title">
+                <span class="section-icon">⚽</span>
+                Athletics & Content Creation
+            </h3>
+
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <h4 class="resume-item-title">Soccer Athlete & Fitness Content Creator</h4>
+                    <span class="resume-item-date">2020 - Present</span>
+                </div>
+                <p class="resume-item-subtitle">
+                    <span class="location-icon">📸</span>
+                    @mj19_training.acl, Instagram
+                </p>
+                <ul>
+                    <li>Maintain a dedicated fitness and soccer training Instagram account with 358+ followers and 64+ instructional posts</li>
+                    <li>Share soccer drills, fitness routines, and athletic development content to inspire and educate followers</li>
+                    <li>Document personal athletic progress and training methodology</li>
+                    <li>Engage with a community of athletes and fitness enthusiasts</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h3 class="resume-section-title">
+                <span class="section-icon">📊</span>
+                Data Analytics Projects
+            </h3>
+
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <h4 class="resume-item-title">Masters Projects</h4>
+                </div>
+                <ul>
+                    <li>Developed an AI Personal Trainer app in 2 weeks by training a custom GPT model in OpenAI</li>
+                    <li>Created a predictive model for King County housing prices by using linear regression on 500,000 records of data on variables such as area and square footage</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h3 class="resume-section-title">
+                <span class="section-icon">🎓</span>
+                Education
+            </h3>
+
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <h4 class="resume-item-title">Master of Science in Information Systems</h4>
+                    <span class="resume-item-date">In Progress</span>
+                </div>
+                <p class="resume-item-subtitle">
+                    <span class="location-icon">🏫</span>
+                    University of Washington - Michael G. Foster School of Business, Seattle, WA
+                </p>
+                <p class="resume-item-description">GPA: 3.59</p>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <h4 class="resume-item-title">Bachelor of Arts in Business Information Systems</h4>
+                    <span class="resume-item-date">June 2024</span>
+                </div>
+                <p class="resume-item-subtitle">
+                    <span class="location-icon">🏫</span>
+                    University of Washington - Michael G. Foster School of Business, Seattle, WA
+                </p>
+                <p class="resume-item-description">GPA: 3.74</p>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h3 class="resume-section-title">
+                <span class="section-icon">🛠️</span>
+                Skills
+            </h3>
+
+            <div class="skill-category">
+                <h4 class="skill-category-title">
+                    <span>💻</span> Technical & Analytics
+                </h4>
+                <div class="skills-list">
+                    <span class="skill-tag"><span></span>Python</span>
+                    <span class="skill-tag"><span></span>SQL</span>
+                    <span class="skill-tag"><span></span>Excel</span>
+                    <span class="skill-tag"><span></span>Machine Learning</span>
+                    <span class="skill-tag"><span></span>Chatbot Development</span>
+                    <span class="skill-tag"><span></span>Neural Networks</span>
+                    <span class="skill-tag"><span></span>Regression Analysis</span>
+                    <span class="skill-tag"><span></span>WordPress</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h4 class="skill-category-title">
+                    <span>📈</span> Business & Leadership
+                </h4>
+                <div class="skills-list">
+                    <span class="skill-tag"><span></span>Product Management</span>
+                    <span class="skill-tag"><span></span>Team Leadership</span>
+                    <span class="skill-tag"><span></span>Business Planning</span>
+                    <span class="skill-tag"><span></span>Data Analytics</span>
+                    <span class="skill-tag"><span></span>Customer Insights</span>
+                    <span class="skill-tag"><span></span>Project Requirements</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h4 class="skill-category-title">
+                    <span>⚽</span> Athletics & Fitness
+                </h4>
+                <div class="skills-list">
+                    <span class="skill-tag"><span></span>Soccer Training</span>
+                    <span class="skill-tag"><span></span>Fitness Programming</span>
+                    <span class="skill-tag"><span></span>Athletic Performance</span>
+                    <span class="skill-tag"><span></span>Sports Training</span>
+                    <span class="skill-tag"><span></span>Content Creation</span>
+                    <span class="skill-tag"><span></span>Social Media Management</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Mubasheer Joban. All rights reserved.</p>
+            <ul class="social-links">
+                <li><a href="https://www.linkedin.com/in/mubasheerjoban" target="_blank">LinkedIn</a></li>
+                <li><a href="https://instagram.com/mj19_training.acl" target="_blank">Instagram</a></li>
+                <li><a href="mailto:mubasheer.joban19@gmail.com">Email</a></li>
+            </ul>
+            <p>Professor Leo is the GOAT</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
