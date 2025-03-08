@@ -27,25 +27,45 @@
             overflow-x: hidden;
         }
 
-        /* Enhanced Hero Section */
+        /* Enhanced Hero Section with Video Background */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 58, 138, 0.9)), url('hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             position: relative;
             padding-top: 100px;
+            overflow: hidden;
+            background: var(--dark); /* Fallback if video doesn't load */
         }
 
-        .hero::before {
+        /* Hero Video Background */
+        .hero-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        /* Overlay gradient for better text visibility */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(30, 58, 138, 0.8));
+            z-index: 1;
+        }
+
+        .hero-overlay::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('overlay-pattern.png');
+            background: url('overlay-pattern.png'); /* Optional pattern overlay */
             opacity: 0.1;
             z-index: 0;
         }
@@ -53,7 +73,7 @@
         .hero-content {
             max-width: 1000px;
             position: relative;
-            z-index: 1;
+            z-index: 2; /* Above the video and overlay */
         }
 
         .hero-image {
@@ -101,6 +121,8 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            opacity: 0.75; /* Add this line to make the text more transparent */
+            color: rgba(255, 255, 255, 0.75);
         }
 
         .hero-buttons {
@@ -149,10 +171,11 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: 0;
+            z-index: 2; /* Above overlay, below content */
         }
 
         .float-element {
+            display: none;
             position: absolute;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
             border-radius: 50%;
@@ -199,7 +222,7 @@
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
             animation: fadeInUp 2s ease, bounce 2s infinite ease 2s;
-            z-index: 1;
+            z-index: 3; /* Above all other elements */
         }
 
         .scroll-indicator span {
@@ -230,7 +253,7 @@
             animation: scrollDown 2s infinite;
         }
 
-        /* Enhanced About Section */
+        /* Rest of the original CSS (unchanged) */
         .about {
             position: relative;
             overflow: hidden;
@@ -636,6 +659,18 @@
             .hero h2 {
                 font-size: 1.4rem;
             }
+
+            /* Disable video on mobile to save bandwidth */
+            .hero-video-bg {
+                display: none;
+            }
+
+            /* Add a fallback background for mobile */
+            .hero {
+                background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 58, 138, 0.9)), url('hero-bg.jpg');
+                background-size: cover;
+                background-position: center;
+            }
         }
     </style>
 </head>
@@ -663,13 +698,27 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Video Background -->
     <section class="hero">
+        <!-- Video Background - Replace your-video.mp4 with your actual video file -->
+        <video class="hero-video-bg" autoplay muted loop playsinline>
+            <source src="UCL.mp4" type="video/mp4">
+            <!-- You can add WebM format for better browser compatibility -->
+            <source src="your-video.webm" type="video/webm">
+            <!-- Browser doesn't support video tag - fallback is handled by CSS -->
+        </video>
+
+        <!-- Overlay for better text readability -->
+        <div class="hero-overlay"></div>
+
+        <!-- Floating Elements -->
         <div class="floating-elements">
             <div class="float-element float-1"></div>
             <div class="float-element float-2"></div>
             <div class="float-element float-3"></div>
         </div>
+
+        <!-- Hero Content -->
         <div class="hero-content">
             <div class="hero-image">
                 <img src="Mubasheer Joban Headshot.jpg" alt="Mubasheer Joban">
@@ -681,6 +730,8 @@
                 <a href="#contact" class="btn btn-outline">Contact Me</a>
             </div>
         </div>
+
+        <!-- Scroll Indicator -->
         <div class="scroll-indicator">
             <span>Scroll Down</span>
         </div>
@@ -723,6 +774,7 @@
         </div>
     </section>
 
+    <!-- The rest of your HTML remains unchanged -->
     <!-- Experience Section -->
     <section id="experience" class="experience">
         <div class="container">
@@ -934,17 +986,6 @@
     <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Parallax effect for hero section
-            window.addEventListener('scroll', function() {
-                const scrollY = window.scrollY;
-                const hero = document.querySelector('.hero');
-                const translateY = scrollY * 0.5;
-
-                if (scrollY < hero.offsetHeight) {
-                    hero.style.backgroundPositionY = translateY + 'px';
-                }
-            });
-
             // Smooth reveal of elements on scroll
             const revealItems = document.querySelectorAll('.skill-category, .project-card, .timeline-item, .contact-item');
 
